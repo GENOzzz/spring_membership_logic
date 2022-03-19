@@ -1,0 +1,27 @@
+package com.membership.domain;
+
+
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Builder
+public class Member {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int member_key;
+    private Long id;
+    private Long pw;
+    private String name;
+    private int birthday;
+    private String email;
+    private String address;
+}

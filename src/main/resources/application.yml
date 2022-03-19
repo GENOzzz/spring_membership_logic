@@ -1,0 +1,24 @@
+# 포트 설정, port는 server안에서 들여써주세요.
+server:
+  port: 5050
+
+# DB접속 정보 MySQL에서 사용할 DB와 username 및 pw 설정
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: 1234
+  # Run시 cache값을 사용하지 않겠다는 의미 (완벽하진 않지만 오류 방지)
+  thymeleaf:
+    cache: false
+
+  # JPA 관련 설정, datasource: 위치와 같은 위치에 작성해줘야함.
+  # JPA를 사용하겠다는 코드
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+      # create : 실행할 때 마다 전체 재시작
+      # update : table을 drop하지 않고 계속해서 사용하겠다는 의미
