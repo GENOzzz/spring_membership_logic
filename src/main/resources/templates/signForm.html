@@ -1,18 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>sign Form</title>
 </head>
 <body>
-<form action ="/signup" method="post">
-    <input type="text" name=”id” placeholder=”id”>
+<form action ="/signup" method="post" >
+    <input type="text" name="id" th:if="${memberDTO}" th:value="${memberDTO.id}">
+    <input type="text" name="id" th:unless="${memberDTO}" placeholder="아이디">
     <button type="submit" formaction="/user-id/{id}/exists">중복체크</button>
-    <input type=”text” name=”pw” placeholder=”비밀번호”>
-    <input type=”text” name=”birthday” placeholder=”생일”>
-    <input type=”text” name=”email” placeholder=”이메일”>
-    <input type=”text” name=”address” placeholder=”주소”>
-    <button type="submit">전송</button>
+    <p th:text="${valid_id}"></p>
+    <p><input type="password" name="pw" placeholder="비밀번호">
+    <p th:text="${valid_pw}"></p>
+    <input type="text" name="name" th:if="${memberDTO}" th:value="${memberDTO.name}">
+    <p><input type=”text” name="name" th:unless="${memberDTO}" placeholder="이름">
+    <p th:text="${valid_name}"></p>
+    <input type="text" name="phone" th:if="${memberDTO}" th:value="${memberDTO.phone}">
+    <p><input type=”text” name="phone"  th:unless="${memberDTO}" placeholder="전화번호">
+    <p th:text="${valid_phone}"></p>
+    <input type="text" name="birthday" th:if="${memberDTO}" th:value="${memberDTO.birthday}">
+    <p><input type=”text” name="birthday"  th:unless="${memberDTO}" placeholder="생년월일6">
+    <p th:text="${valid_birthday}"></p>
+    <input type="text" name="email" th:if="${memberDTO}" th:value="${memberDTO.email}">
+    <p><input type=”text” name="email" th:unless="${memberDTO}" placeholder="이메일">
+    <p th:text="${valid_email}"></p>
+    <input type="text" name="address" th:if="${memberDTO}" th:value="${memberDTO.address}">
+    <p><input type=”text” name="address" th:unless="${memberDTO}"  placeholder="주소">
+    <p><button type="submit">전송</button>
 </form>
 </body>
 </html>

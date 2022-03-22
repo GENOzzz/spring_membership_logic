@@ -17,11 +17,12 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int member_key;
-    private Long id;
-    private Long pw;
+    private Long member_key;
+    private String id;
+    private String pw;
     private String name;
-    private int birthday;
+    private String birthday;
+    private String phone;
     private String email;
     private String address;
 }
