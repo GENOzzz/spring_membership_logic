@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/js/membership.js" defer></script>
 <head>
     <meta charset="UTF-8">
     <title>sign Form</title>
 </head>
 <body>
 <form action ="/signup" method="post" >
-    <input type="text" name="id" th:if="${memberDTO}" th:value="${memberDTO.id}">
-    <input type="text" name="id" th:unless="${memberDTO}" placeholder="아이디">
-    <button type="submit" formaction="/user-id/{id}/exists">중복체크</button>
+    <p><input type="text" class="id" name="id" th:if="${memberDTO} or ${id}" th:value="${memberDTO.id}" oninput="idCheck()"></p>
+    <p><input type="text" class="id" name="id" th:unless="${memberDTO}" placeholder="아이디" oninput="idCheck()"></p>
+    <p class="id_success">가입 가능한 아이디 입니다.</p>
+    <p class="id_failed">이미 가입된 아이디 입니다.</p>
+    <p class="id_length">가입 불가능한 아이디입니다.</p>
     <p th:text="${valid_id}"></p>
-    <p><input type="password" name="pw" placeholder="비밀번호">
+    <p><input class="pw1" type="password" name="pw" placeholder="비밀번호" oninput="pwCheck()">
+    <p><input class="pw2" type="password" placeholder="비밀번호 확인" oninput="pwCheck()">
+    <p class="password_check_ok">비밀 번호가 일치합니다.</p>
+    <p class="password_check_no">비밀 번호가 일치하지 않습니다.</p>
     <p th:text="${valid_pw}"></p>
-    <input type="text" name="name" th:if="${memberDTO}" th:value="${memberDTO.name}">
-    <p><input type=”text” name="name" th:unless="${memberDTO}" placeholder="이름">
+    <input type="text"  name="name" th:if="${memberDTO}" th:value="${memberDTO.name}">
+    <p><input type=”text”  name="name" th:unless="${memberDTO}" placeholder="이름">
     <p th:text="${valid_name}"></p>
     <input type="text" name="phone" th:if="${memberDTO}" th:value="${memberDTO.phone}">
     <p><input type=”text” name="phone"  th:unless="${memberDTO}" placeholder="전화번호">
     <p th:text="${valid_phone}"></p>
     <input type="text" name="birthday" th:if="${memberDTO}" th:value="${memberDTO.birthday}">
-    <p><input type=”text” name="birthday"  th:unless="${memberDTO}" placeholder="생년월일6">
+    <p><input type=”text” name="birthday"  th:unless="${memberDTO}" placeholder="생년월일6자리">
     <p th:text="${valid_birthday}"></p>
     <input type="text" name="email" th:if="${memberDTO}" th:value="${memberDTO.email}">
     <p><input type=”text” name="email" th:unless="${memberDTO}" placeholder="이메일">
     <p th:text="${valid_email}"></p>
     <input type="text" name="address" th:if="${memberDTO}" th:value="${memberDTO.address}">
     <p><input type=”text” name="address" th:unless="${memberDTO}"  placeholder="주소">
-    <p><button type="submit">전송</button>
+    <p><button id="sub_button" type="submit" disabled="disabled" >전송</button>
 </form>
 </body>
 </html>
+
+
+

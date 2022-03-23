@@ -1,0 +1,24 @@
+.id_success{
+    color : green;
+    display: none;
+}
+
+.id_failed{
+    color : red;
+    display: none;
+}
+
+.id_length{
+    color : red;
+    display: none;
+}
+
+.password_check_ok{
+    color : green;
+    display:none;
+}
+
+.password_check_no{
+    color : red;
+    display:none;
+}
