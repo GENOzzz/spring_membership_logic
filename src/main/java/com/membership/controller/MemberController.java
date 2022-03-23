@@ -66,6 +66,21 @@ public class MemberController {
         }else{
             return 0;
         }
+    }
+
+    @GetMapping("/login")
+    public String loginForm(){
+        return "loginForm";
+    }
+
+    @PostMapping("/login")
+    public String loginDO(String id,String pw,Model model){
+        log.info("id={},pw={}",id,pw);
+        if(memberService.loginDO(id,pw,model)){
+            return "loginSuccess";
+        }else {
+            return "loginForm";
+        }
 
     }
 
